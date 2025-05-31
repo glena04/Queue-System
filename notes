@@ -41,3 +41,6 @@ customer section-
 I person came and he will create a ticket and then activate the ticket.
 Then he will wait for his turn.
 When his turn comes, he will be called by the admin.
+
+in order to compile the typescript files u have to go inside the backend folder and run the following command
+npm run build
