@@ -1,0 +1,143 @@
+.admin-dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 16px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f7f9fb;
+  color: #222;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+section {
+  margin-bottom: 2.5rem;
+}
+
+.stats-cards {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.stat-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 1.5rem 2rem;
+  flex: 1;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #1976d2;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+}
+
+.registration-forms {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.registration-forms .card {
+  flex: 1 1 320px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  margin: 0.5rem 0 1rem 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #f9f9f9;
+}
+
+button {
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: #125ea8;
+}
+
+button.danger {
+  background: #e53935;
+}
+
+button.danger:hover {
+  background: #b71c1c;
+}
+
+.inline-form {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  margin-top: 1rem;
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: left;
+}
+
+th {
+  background: #f1f5f9;
+  font-weight: 600;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+.error {
+  color: #e53935;
+  margin-top: 0.5rem;
+}
+
+.success {
+  color: #43a047;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 900px) {
+  .stats-cards,
+  .registration-forms {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .card {
+    padding: 1rem;
+  }
+}

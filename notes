@@ -1,0 +1,22 @@
+/queue-management-system
+|-- /public
+|-- /src
+|   |-- /components
+|   |   |-- /auth
+|   |   |   |-- ProtectedRoute.tsx
+|   |   |-- /dashboard
+|   |   |   |-- AdminDashboard.tsx
+|   |   |-- /queue
+|   |   |   |-- TicketGenerator.tsx
+|   |   |   |-- QueueManager.tsx
+|   |   |   |-- QueueDisplay.tsx
+|   |   |-- /hooks
+|   |   |   |-- useAppSelector.ts
+|   |   |-- /context
+|   |   |   |-- QueueContext.tsx
+|   |   |-- App.tsx
+|   |-- /redux
+|   |   |-- store.ts
+|   |   |-- authSlice.ts
+|   |   |-- queueSlice.ts
+|-- package.json

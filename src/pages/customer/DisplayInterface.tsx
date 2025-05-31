@@ -1,0 +1,30 @@
+// src/components/queue/TicketGenerator.tsx
+import React, { useState } from 'react';
+import { useAppDispatch } from '../../hooks/reduxHooks';
+import { generateTicket } from '../../store/slices/queueSlice';
+
+const TicketGenerator: React.FC = () => {
+  const [name, setName] = useState('');
+  const dispatch = useAppDispatch();
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    dispatch(generateTicket({ name }));
+    setName('');
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        placeholder="Enter your name"
+        required
+      />
+      <button type="submit">Generate Ticket</button>
+    </form>
+  );
+};
+
+export default TicketGenerator;

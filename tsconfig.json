@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+      "jsx": "react-jsx", // Enable JSX support for React
+      "target": "ES6", // Ensure ES6 or higher is used
+      "module": "commonjs",
+      "outDir": "./dist",
+      "rootDir": "./src",
+      "strict": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules", "dist"]
+  }
