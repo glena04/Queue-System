@@ -20,3 +20,24 @@
 |   |   |-- authSlice.ts
 |   |   |-- queueSlice.ts
 |-- package.json
+
+
+
+Note------
+Vanila JavaScript is loosely typed, meaning variables can hold any type of data without strict type checking.
+Example
+let a = 5;    // Initially a is a number
+// Later, a can be reassigned to a string
+a = "Hello"; // This is valid in JavaScript
+
+// Microst has create a new language called TypeScript, which is a superset of JavaScript that adds static typing.
+// TypeScript is strongly typed, meaning variables have a specific type that is enforced at compile time.
+
+Before running the TypeScript code, you need to compile it to JavaScript using the TypeScript compiler (tsc).
+
+
+
+customer section-
+I person came and he will create a ticket and then activate the ticket.
+Then he will wait for his turn.
+When his turn comes, he will be called by the admin.

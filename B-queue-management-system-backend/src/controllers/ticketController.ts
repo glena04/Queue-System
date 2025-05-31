@@ -27,7 +27,7 @@ export const createTicket = async (req: Request, res: Response): Promise<void> =
   try {
     const { customerName, serviceId } = req.body;
     const userId = extractUserId(req);
-    
+
     console.log('Create ticket request:', { customerName, serviceId, userId });
 
     if (!customerName || !serviceId) {
@@ -40,7 +40,7 @@ export const createTicket = async (req: Request, res: Response): Promise<void> =
       where: { serviceId },
       order: [['ticketNumber', 'DESC']],
     });
-    
+
     // Safely handle ticket number generation
     let nextTicketNumber = 1;
     if (lastTicket) {
@@ -51,7 +51,7 @@ export const createTicket = async (req: Request, res: Response): Promise<void> =
         nextTicketNumber = parseInt(lastNumber, 10) + 1;
       }
     }
-    
+
     console.log('Generated next ticket number:', nextTicketNumber);
 
     const ticketData = {
@@ -87,19 +87,19 @@ export const getAllTickets = async (req: Request, res: Response): Promise<void> 
 export const getUserTickets = async (req: Request, res: Response): Promise<void> => {
   try {
     const userId = extractUserId(req);
-    
+
     console.log('Getting tickets for user ID:', userId);
-    
+
     if (!userId) {
       res.status(400).json({ message: 'User ID not found in token or invalid format' });
       return;
     }
-    
+
     const tickets = await Ticket.findAll({
       where: { userId },
       order: [['createdAt', 'DESC']]
     });
-    
+
     console.log(`Found ${tickets.length} tickets for user ${userId}`);
     res.json(tickets);
   } catch (error: any) {
@@ -113,38 +113,38 @@ export const activateTicket = async (req: Request, res: Response): Promise<void>
   try {
     const { id } = req.params;
     const userId = extractUserId(req);
-    
+
     console.log(`Activating ticket ${id} for user ${userId}`);
-    
+
     if (!id) {
       res.status(400).json({ message: 'Ticket ID is required' });
       return;
     }
-    
+
     const ticketId = parseInt(id, 10);
     if (isNaN(ticketId)) {
       res.status(400).json({ message: 'Invalid ticket ID format' });
       return;
     }
-    
+
     const ticket = await Ticket.findByPk(ticketId);
-    
+
     if (!ticket) {
       res.status(404).json({ message: 'Ticket not found' });
       return;
     }
-    
+
     // Check if the ticket belongs to the authenticated user
     const ticketUserId = ticket.get('userId');
     if (userId && ticketUserId && ticketUserId !== userId) {
       res.status(403).json({ message: 'You can only activate your own tickets' });
       return;
     }
-    
+
     ticket.set('status', 'waiting');
     ticket.set('scannedAt', new Date());
     await ticket.save();
-    
+
     console.log(`Ticket ${id} activated successfully`);
     res.json(ticket);
   } catch (error: any) {
@@ -158,9 +158,12 @@ export const callNextTicket = async (req: Request, res: Response) => {
   try {
     // Find the next pending ticket for the service
     const ticket = await Ticket.findOne({
-      where: { serviceId, status: 'pending' },
+      where: { serviceId, status: 'waiting' },
       order: [['createdAt', 'ASC']],
     });
+    const tickets = await Ticket.findAll({
+    });
+    console.log('All tickets:', tickets);
     if (!ticket) return res.status(404).json({ message: 'No pending tickets' });
     ticket.status = 'serving';
     ticket.counterId = counterId;

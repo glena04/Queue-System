@@ -92,6 +92,7 @@ export const callNextTicket = createAsyncThunk(
     { rejectWithValue }
   ) => {
     try {
+      console.log('counterId and serviceId', counterId, serviceId);
       const response = await api.post('/api/tickets/next', { counterId, serviceId });
       return response.data;
     } catch (error: any) {
